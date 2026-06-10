@@ -1,0 +1,11 @@
+:root {
+    --purple: #6e098f;
+    --red:    #740c05;
+} /* Couleurs basiques à personnaliser (j'adore le rouge et le violet)*/
+body { background-color: #f8f9fa; }
+
+.navbar-custom { background-color: var(--purple) !important; }
+.navbar-custom h1, .navbar-custom small { margin: 0 auto; text-align: center; }
+
+.header-red    { background-color: var(--red)    !important; color: #fff !important; }
+.header-purple { background-color: var(--purple) !important; color: #fff !important; }
