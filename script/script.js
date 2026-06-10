@@ -27,5 +27,16 @@ function spotifyApp() {
             }
             this.topAlbums = [...seen.values()];
         },
+
+        // graphique pour les artistes//
+        buildArtistsChart() {
+            const c = {};
+            this.tracks.forEach(t => t.artists.forEach(a => { c[a.name] = (c[a.name]||0)+1; }));
+            const top = Object.entries(c).sort((a,b)=>b[1]-a[1]).slice(0,10);
+            new Chart(document.getElementById('artistsChart'), {
+                type:'bar', data:{ labels:top.map(([n])=>n), datasets:[{data:top.map(([,v])=>v),backgroundColor:'#be9fc9'}] },
+                options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}} }
+            });
+        },
     }
 };
