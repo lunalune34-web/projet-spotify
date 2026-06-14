@@ -28,6 +28,13 @@ function spotifyApp() {
             this.topAlbums = [...seen.values()];
         },
 
+        formatDuration(ms) { if (!ms) return '0:00'; const m = Math.floor(ms/60000), s = Math.floor((ms%60000)/1000); return `${m}:${s<10?'0':''}${s}`; },
+        formatFollowers(n) { return n != null ? Number(n).toLocaleString('fr-FR') : '0'; },
+        formatDate(str) { if (!str) return ''; const [y,m,d] = str.split('-'); return `${parseInt(d)} ${['janvier','février','mars','avril','mai','juin','juillet','août','septembre','octobre','novembre','décembre'][m-1]} ${y}`; },
+        extractGenres(t) { return t?.artists ? [...new Set(t.artists.flatMap(a => a.genres ?? []))] : []; },
+        bestImage(imgs) { return imgs?.at(-1)?.url ?? ''; },
+        deezerUrl(id) { return `https://www.deezer.com/track/${id}`; },
+
         // graphique pour les artistes//
         buildArtistsChart() {
             const c = {};

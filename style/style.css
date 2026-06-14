@@ -20,3 +20,12 @@ body { background-color: #f8f9fa; }
 
 /* Albums */
 .album-cover { aspect-ratio: 1/1; object-fit: cover; }
+
+/* Modal */
+.modal-cover { max-width: 220px; aspect-ratio: 1/1; object-fit: cover; }
+.artist-avatar { width: 40px; height: 40px; object-fit: cover; }
+.badge-genre { font-size: .7rem; }
+.artist-meta { font-size: .7rem; }
+
+/* Barre de pop */
+.progress-bar-popularity { height: 8px; }
