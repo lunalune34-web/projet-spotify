@@ -9,3 +9,14 @@ body { background-color: #f8f9fa; }
 
 .header-red    { background-color: var(--red)    !important; color: #fff !important; }
 .header-purple { background-color: var(--purple) !important; color: #fff !important; }
+
+.btn-detail { background-color: var(--red) !important; border-color: var(--red) !important; color: #fff !important; }
+.btn-detail:hover { background-color: #fff !important; border-color: var(--red) !important; color: #000 !important; }
+
+.footer-custom { background-color: var(--purple); }
+
+/* Graphiques */
+.chart-body { position: relative; height: 250px; }
+
+/* Albums */
+.album-cover { aspect-ratio: 1/1; object-fit: cover; }

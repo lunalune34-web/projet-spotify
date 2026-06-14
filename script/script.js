@@ -38,5 +38,15 @@ function spotifyApp() {
                 options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}} }
             });
         },
-    }
-};
+// graphique pour les genress//
+        buildGenresChart() {
+            const c = {};
+            this.tracks.forEach(t => t.artists.forEach(a => a.genres?.forEach(g => { c[g]=(c[g]||0)+1; })));
+            const top = Object.entries(c).sort((a,b)=>b[1]-a[1]).slice(0,6);
+            new Chart(document.getElementById('genresChart'), {
+                type:'pie', data:{ labels:top.map(([g])=>g), datasets:[{data:top.map(([,v])=>v),backgroundColor:['#971212','#4d0d0d','#0f3168','#52067e','#c5a4f2','#e7aed9','#e3edf7']}] },
+                options:{ responsive:true, maintainAspectRatio:false, plugins:{legend:{position:'right',labels:{boxWidth:12}}} }
+            });
+        }
+    };
+}
