@@ -106,7 +106,7 @@
     <div class="modal-content" x-show="selectedTrack">
       <div class="modal-header border-0">
         <h5 class="modal-title fw-bold">Détails du morceau</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" @click="document.getElementById('modalAudio')?.pause()"></button>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" @click="selectedTrack=track"></button>
       </div>
       <div class="modal-body">
         <div class="row g-4">
@@ -119,12 +119,10 @@
           <div class="col-md-7">
             <h3 class="fs-5 fw-bold mb-3" x-text="selectedTrack?.name+' — '+selectedTrack?.album?.name"></h3>
             <label class="text-muted small fw-bold d-block mb-1">Aperçu audio</label>
-            <template x-if="selectedTrack?.preview_url">
-              <audio id="modalAudio" controls class="w-100 mb-3" :src="selectedTrack?.preview_url"></audio>
-            </template>
-            <template x-if="!selectedTrack?.preview_url">
-              <p class="text-muted fst-italic small mb-3">Aucun aperçu disponible</p>
-            </template>
+                <iframe :src="'https://widget.deezer.com/widget/dark/track/'+selectedTrack?.id"
+                  width="100%" height="80" frameborder="0"
+                  allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture">
+                </iframe>
             <div class="border-top pt-3">
               <div class="d-flex justify-content-between py-2 border-bottom">
                 <span class="text-secondary small">Durée</span>
