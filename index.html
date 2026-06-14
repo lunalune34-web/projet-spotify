@@ -47,7 +47,37 @@
       <span class="fw-bold text-white">Liste de mes morceaux</span>
       <input type="search" class="form-control form-control-sm bg-white w-auto" placeholder="Rechercher..." x-model="searchQuery">
     </div>
+    
+<!-- Version pc portable -->
+    <div class="table-responsive d-none d-md-block">
+        <table class="table table-hover align-middle mb-0">
+          <thead class="table-secondary"><tr class="small"><th class="ps-3">Titre</th><th>Artiste</th><th>Album</th><th class="text-end pe-3">Action</th></tr></thead>
+          <tbody>
+            <template x-for="track in filteredTracks" :key="track.id">
+              <tr>
+                <td class="ps-3 fw-semibold" x-text="track.name"></td>
+                <td class="text-secondary" x-text="track.artists.map(a=>a.name).join(', ')"></td>
+                <td class="text-secondary" x-text="track.album.name"></td>
+                <td class="text-end pe-3"><button class="btn btn-detail btn-sm" data-bs-toggle="modal" data-bs-target="#detailsModal" @click="selectedTrack=track; fetchPreview(track)">Détails</button></td>
+              </tr>
+            </template>
+          </tbody>
+        </table>
+    </div>
 
+  <!-- Version mobile des cartes -->
+    <div class="d-md-none p-3">
+        <template x-for="track in filteredTracks" :key="track.id">
+          <div class="p-3 mb-2 border rounded bg-light">
+            <div class="fw-bold" x-text="track.name"></div>
+            <div class="text-secondary small" x-text="track.artists.map(a=>a.name).join(', ')"></div>
+            <div class="text-secondary small mb-2" x-text="track.album.name"></div>
+            <button class="btn btn-detail btn-sm w-100" data-bs-toggle="modal" data-bs-target="#detailsModal" @click="selectedTrack=track; fetchPreview(track)"> Détails</button>
+          </div>
+        </template>
+      </div>
+  </div>
+</section>
 <!-- Les albumspopulaires -->
   <section class="mb-5">
     <h2 class="fs-4 fw-bold mb-4">Albums Populaires</h2>
@@ -68,6 +98,7 @@
       </template>
     </div>
   </section>
+</main>
 
   <!-- La fenêtre quand on clique sur Détails  -->
 <div class="modal fade" id="detailsModal" tabindex="-1" aria-hidden="true">
@@ -150,37 +181,6 @@
     </div>
   </div>
 </div>
-
-<!-- Version pc portable -->
-    <div class="table-responsive d-none d-md-block">
-        <table class="table table-hover align-middle mb-0">
-          <thead class="table-secondary"><tr class="small"><th class="ps-3">Titre</th><th>Artiste</th><th>Album</th><th class="text-end pe-3">Action</th></tr></thead>
-          <tbody>
-            <template x-for="track in filteredTracks" :key="track.id">
-              <tr>
-                <td class="ps-3 fw-semibold" x-text="track.name"></td>
-                <td class="text-secondary" x-text="track.artists.map(a=>a.name).join(', ')"></td>
-                <td class="text-secondary" x-text="track.album.name"></td>
-                <td class="text-end pe-3"><button class="btn btn-detail btn-sm" data-bs-toggle="modal" data-bs-target="#detailsModal" @click="selectedTrack=track; fetchPreview(track)">Détails</button></td>
-              </tr>
-            </template>
-          </tbody>
-        </table>
-    </div>
-
-  <!-- Version mobile des cartes -->
-    <div class="d-md-none p-3">
-        <template x-for="track in filteredTracks" :key="track.id">
-          <div class="p-3 mb-2 border rounded bg-light">
-            <div class="fw-bold" x-text="track.name"></div>
-            <div class="text-secondary small" x-text="track.artists.map(a=>a.name).join(', ')"></div>
-            <div class="text-secondary small mb-2" x-text="track.album.name"></div>
-            <button class="btn btn-detail btn-sm w-100" data-bs-toggle="modal" data-bs-target="#detailsModal" @click="selectedTrack=track; fetchPreview(track)"> Détails</button>
-          </div>
-        </template>
-      </div>
-  </div>
-</section>
 
 <!-- Petit footer tout mimi -->
 

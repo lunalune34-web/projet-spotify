@@ -45,6 +45,7 @@ function spotifyApp() {
                 options:{ indexAxis:'y', responsive:true, maintainAspectRatio:false, plugins:{legend:{display:false}} }
             });
         },
+        
 // graphique pour les genress//
         buildGenresChart() {
             const c = {};
